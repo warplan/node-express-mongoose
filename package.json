@@ -1,0 +1,19 @@
+{
+  "name": "mongooseStart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.17",
+    "node-uuid": "^1.4.8",
+    "path": "^0.12.7"
+  }
+}

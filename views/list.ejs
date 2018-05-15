@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>吃货零食店</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/list.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header_title"><a href="/">吃货零食店</a><span class="header_user">欢迎你,吃货</span></div>
+    </div>
+    <div class="panel_link_fixed"><a href="#" class="red panel_item_btn">添加零食</a></div>
+    <div class="panel">
+        <div class="panel_search">
+            <input type="number" placeholder="¥" class="input_txt" id="price1"> -
+            <input type="number" placeholder="¥" class="input_txt" id="price2">
+            <button type="button" class="panel_search_btn" id="search_btn">搜索</button>
+        </div>
+        <div class="panel_item">
+            <ul>
+                <% for (var i=0; i<list.length; i++) { %>
+                    <li class="panel_item_product product<%=list[i]._id%>">
+                        <img src="<%=list[i].url %>" alt="" title="<%=list[i].name%>" class="img">
+                        <p class="price"> ¥
+                            <%=list[i].price %>
+                        </p>
+                        <p class="name">
+                            <%=list[i].name %>
+                        </p>
+                        <img src="images/close.png" alt="" class="panel_iten_close" id="<%=list[i]._id%>">
+                        <button type="button" class="btn btn-default editBtn" data-id="<%=list[i]._id%>" data-name="<%=list[i].name %>" data-url="<%=list[i].url %>" data-price="<%=list[i].price %>">编辑</button>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+    </div>
+    <div class="dialog">
+        <h2>添加/编辑商品</h2>
+        <form role="form">
+            <div class="form-group">
+                <label for="name">商品名称</label>
+                <input type="text" class="form-control" id="name" placeholder="请输入商品名称">
+            </div>
+            <div class="form-group">
+                <label for="name">商品价格</label>
+                <input type="text" class="form-control" id="price" placeholder="请输入商品价格">
+            </div>
+            <div class="form-group">
+                <label for="name">商品图片链接</label>
+                <input type="text" class="form-control" id="url" placeholder="请输入商品图片链接">
+            </div>
+            <button type="button" class="btn btn-default" id="submitBtn">提交</button>
+            <button type="button" class="btn btn-default" id="cancelBtn">取消</button>
+        </form>
+    </div>
+    <div class="modal-backdrop"></div>
+    <script>
+    // 编辑的商品ID
+    var id = '';
+
+    // 删除商品操作
+    $('.panel_iten_close').on('click', function() {
+        var id = $(this).attr('id');
+        $.ajax({
+            url: '/admin/delete/product',
+            type: 'post',
+            data: {
+                id: $(this).attr('id')
+            },
+            success: function(res) {
+                if (res.code === 'success') {
+                    alert('删除成功');
+                    $(".product" + id).remove();
+                }
+            }
+        })
+    })
+
+    // 搜索商品操作
+    $("#search_btn").on('click', function() {
+        var price1 = $("#price1").val(),
+            price2 = $("#price2").val();
+
+        if (!price1 && !price2) return;
+
+        $.ajax({
+            url: '/list/search',
+            type: 'get',
+            data: {
+                price1: price1,
+                price2: price2
+            },
+            success: function(res) {
+                $("body").html(res);
+            }
+        })
+    })
+
+    // 添加商品/编辑商品
+    $("#submitBtn").click(function() {
+        if (!id) {
+            $.ajax({
+                url: '/admin/add/product',
+                type: 'post',
+                data: {
+                    name: $("#name").val(),
+                    price: $("#price").val(),
+                    url: $("#url").val()
+                },
+                success: function(res) {
+                    if (res.code === 'success') {
+                        alert('添加成功');
+                    }
+                }
+            })
+        } else {
+            $.ajax({
+                url: '/admin/edit/product',
+                type: 'post',
+                data: {
+                    id: id,
+                    name: $("#name").val(),
+                    price: $("#price").val(),
+                    url: $("#url").val()
+                },
+                success: function(res) {
+                    if (res.code === 'success') {
+                        alert('编辑成功');
+                    }
+                }
+            })
+        }
+    })
+
+    // 编辑 dialog打开
+    $(".editBtn").on("click", function() {
+        var $this = $(this);
+        $(".dialog").show();
+        $(".modal-backdrop").show();
+        $("#name").val($this.data('name'));
+        $("#url").val($this.data('url'));
+        $("#price").val($this.data('price'));
+        id = $this.data('id');
+    })
+
+    // 添加 dialog 打开
+    $(".panel_item_btn").on("click", function() {
+        id = '';
+        $(".dialog").show();
+        $(".modal-backdrop").show();
+    })
+
+    // 添加 dialog 关闭
+    $("#cancelBtn").on("click", function() {
+        $(".dialog").hide();
+        $(".modal-backdrop").hide();
+    })
+    </script>
+</body>
+
+</html>

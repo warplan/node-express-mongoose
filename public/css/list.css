@@ -1,0 +1,140 @@
+.red {
+	color: red;
+}
+.price {
+	margin: 0;
+	margin-left: 16px;
+    color: #e4393c;
+    font-size: 18px;
+}
+.name {
+	height: 42px;
+	overflow: hidden;
+	margin-left: 16px;
+	font-size: 14px;
+	color: #515152;
+}
+.panel_link_fixed {
+	position: fixed;
+	top: 56px;
+    left: 17px;
+}
+.panel_item_product {
+	position: relative;
+	float: left;
+	width: 24%;
+	height: 280px;
+	cursor: pointer;
+	background: #fff;
+	margin-bottom: 24px;
+	border-right: 1px solid #f0f0f0;
+}
+.panel_item_product:hover .editBtn {
+	display: block;
+}
+.editBtn {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+.panel_item .img {
+	width: 130px;
+	padding: 50px;
+	padding-bottom: 10px;
+	box-sizing: content-box;
+}
+.panel_iten_close {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 18px;
+	height: 18px;
+}
+.panel_search {
+	margin-left: 40px;
+}
+.input_txt {
+	width: 90px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 5px;
+	outline: none;
+}
+.panel_search_btn {
+	display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    border-color: #dcdfe6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+}
+.panel_item_btn {
+	display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    border-color: #dcdfe6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.dialog {
+	position: absolute;
+	top: 150px;
+	left: 300px;
+	z-index: 10000;
+	width: 600px;
+	height: 380px;
+	padding: 10px;
+	background: #fff;
+	display: none;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    opacity: 0.3;
+    background-color: #000;
+    display: none;
+}
