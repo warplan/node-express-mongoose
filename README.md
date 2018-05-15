@@ -22,7 +22,7 @@ cd node-express-mongoose
 
 npm install
 
-npm app.js
+node app.js
 
 访问: http://localhost:3000
 
