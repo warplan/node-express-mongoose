@@ -33,9 +33,12 @@ npm app.js
 
 #### 部分前台页面
 
-<img src="https://github.com/warplan/node-express-mongoose/blob/master/public/images/1.jpg"/> 
-<img src="https://github.com/warplan/node-express-mongoose/blob/master/public/images/2.jpg"/>
-<img src="https://github.com/warplan/node-express-mongoose/blob/master/public/images/3.jpg"/>
+<img src="https://github.com/warplan/node-express-mongoose/blob/master/public/images/1.jpg" width="600"/> 
+
+<img src="https://github.com/warplan/node-express-mongoose/blob/master/public/images/3.jpg" width="600"/>
+
+<img src="https://github.com/warplan/node-express-mongoose/blob/master/public/images/2.jpg" width="500"/>
+
 
 # 说明
 
